@@ -109,6 +109,10 @@ case $plang in
   
 esac
 
+echo 123 >>"/var/log/certd.log"
+echo $ALY_KEY >>"/var/log/certd.log"
+echo 456 >>"/var/log/certd.log"
+
 $cmd $dnsapi $paction $CERTBOT_DOMAIN "_acme-challenge" $CERTBOT_VALIDATION $key $token >>"/var/log/certd.log"
 
 if [[ "$paction" == "add" ]]; then
