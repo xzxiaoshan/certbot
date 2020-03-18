@@ -4,7 +4,7 @@ MAINTAINER xzxiaoshan <365384722@qq.com>
 ENV TZ="Asia/Shanghai"
 WORKDIR /opt/
 
-VOLUME ["/etc/letsencrypt","/var/log/certbot.log","/var/log/certd.log"]
+VOLUME ["/etc/letsencrypt"]
 
 COPY certbot-au /opt/certbot-au
 COPY shell /opt/shell
@@ -14,7 +14,7 @@ ENV ALY_TOKEN=""
 ENV ALY_KEY=""
 ENV CERT_PARAMS="--email youremail@qq.com -d yourdomain.com -d *.yourdomain.com"
 
-RUN set -x && \
+RUN set -x \
   && rm -rf /etc/localtime \
   && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   && yum install -y wget python36 cronie crontabs \
@@ -24,8 +24,9 @@ RUN set -x && \
   && chown root /usr/local/bin/certbot-auto \
   && chmod 0755 /usr/local/bin/certbot-auto \
   && mkdir -p /etc/letsencrypt/renewal \
+  && chmod +x /opt/shell/* \
   && sed -i 's/^\(ALY\|TXY\|HWY\|GODADDY\)/#&/' /opt/certbot-au/au.sh \
   && sed -ri 's/.*pam_loginuid.so/#&/' /etc/pam.d/crond \
-  && (crontab -l; echo "*/1 * * * * /opt/shell/letsCert_inside.sh" ) | crontab
+  && (crontab -l; echo "1 0 * * * /opt/shell/letsCert_inside.sh" ) | crontab
 
 ENTRYPOINT ["/opt/shell/entrypoint.sh"]
