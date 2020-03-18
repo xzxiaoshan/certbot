@@ -25,6 +25,7 @@ RUN set -x \
   && chmod 0755 /usr/local/bin/certbot-auto \
   && mkdir -p /etc/letsencrypt/renewal \
   && chmod +x /opt/shell/* \
+  && touch /var/log/certbot.log \
   && sed -i 's/^\(ALY\|TXY\|HWY\|GODADDY\)/#&/' /opt/certbot-au/au.sh \
   && sed -ri 's/.*pam_loginuid.so/#&/' /etc/pam.d/crond \
   && (crontab -l; echo "1 0 * * * /opt/shell/letsCert_inside.sh" ) | crontab
