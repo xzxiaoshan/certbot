@@ -19,16 +19,14 @@ RUN set -x \
   && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   && yum install -y wget epel-release python36 python3-pip cronie crontabs \
   && ln -s /usr/bin/python3.6 /usr/bin/python \
-  && ln -s /usr/bin/python3.6 /usr/bin/python3 \
   && wget https://dl.eff.org/certbot-auto \
   && mv certbot-auto /usr/local/bin/certbot-auto \
   && chown root /usr/local/bin/certbot-auto \
   && chmod 0755 /usr/local/bin/certbot-auto \
   && mkdir -p /etc/letsencrypt/renewal \
-  && chmod +x /opt/certbot-au/au.sh \
   && chmod +x /opt/shell/* \
-  && touch /var/log/certbot.log \
   && sed -i 's/^\(ALY\|TXY\|HWY\|GODADDY\)/#&/' /opt/certbot-au/au.sh \
+  && chmod +x /opt/certbot-au/au.sh \
   && sed -ri 's/.*pam_loginuid.so/#&/' /etc/pam.d/crond \
   && (crontab -l; echo "1 0 * * * /opt/shell/letsCert_inside.sh" ) | crontab
 
