@@ -5,10 +5,8 @@ certbot 免费泛域名证书的生成，容器启动自动生成，容器自动
 ### 使用方法 
 **命令代码**  
 ```
-touch /opt/certbot/logs/certbot.log
 docker run -itd --name xzxiaoshan-certbot \
 -v /opt/certbot/logs:/var/log/letsencrypt \
--v /opt/certbot/logs/certbot.log:/var/log/certbot.log \
 -v /opt/certbot/letsencrypt:/etc/letsencrypt \
 -e ALY_TOKEN=XXXXXXXXXX \
 -e ALY_KEY=XXXXXXXXX -e PDNS=aly \
