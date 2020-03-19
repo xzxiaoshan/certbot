@@ -15,9 +15,9 @@ docker run -itd --name xzxiaoshan-certbot \
 xzxiaoshan/xzxiaoshan-certbot:latest /bin/bash
 ```
 **参数说明**
-1、PDNS参数
+1、PDNS参数  
 * 阿里云`aly`、腾讯云``、华为云`hwy`、GoDaddy`godaddy`  
-2、DNS API 密钥
+2、DNS API 密钥  
 * ALY_KEY 和 ALY_TOKEN：阿里云 [API key 和 Secrec 官方申请文档](https://help.aliyun.com/knowledge_detail/38738.html)。
 * TXY_KEY 和 TXY_TOKEN：腾讯云 [API 密钥官方申请文档](https://console.cloud.tencent.com/cam/capi)。
 * HWY_KEY 和 HWY_TOKEN: 华为云 [API 密钥官方申请文档](https://support.huaweicloud.com/devg-apisign/api-sign-provide.html)。
@@ -32,7 +32,7 @@ xzxiaoshan/xzxiaoshan-certbot:latest /bin/bash
 
 ---
 
-感谢[certbot-au](https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au)代码的作者。
+感谢[certbot-au](https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au)代码的作者。  
 
 ---
 
