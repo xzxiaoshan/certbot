@@ -23,6 +23,7 @@ RUN set -x \
   && mv certbot-auto /usr/local/bin/certbot-auto \
   && chown root /usr/local/bin/certbot-auto \
   && chmod 0755 /usr/local/bin/certbot-auto \
+  && echo 'Y' | /opt/certbot-master/certbot-auto --install-only \
   && mkdir -p /etc/letsencrypt/renewal \
   && chmod +x /opt/shell/* \
   && sed -i 's/^\(ALY\|TXY\|HWY\|GODADDY\)/#&/' /opt/certbot-au/au.sh \
