@@ -22,7 +22,7 @@ if [ "$ca_domain"x != ""x ]; then
 		#获取要更新的证书的subject
 		sourceSubject=`sudo openssl x509 -in ${ca_dir}/cert.pem -noout -subject`
 		echo "sourceSubject="$sourceSubject
-		#获取群和所有证书
+		#获取群晖所有证书
 		certList=`find /usr/syno/etc/certificate/ /usr/local/etc/certificate/ -name cert.pem`
 		for cert in $certList
 		do
