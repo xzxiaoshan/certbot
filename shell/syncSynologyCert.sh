@@ -8,13 +8,18 @@
 ###############################################################################################################
 
 #你挂载到docker的目录路径，这个注意不要修改错了（在群晖中右键文件夹》查看属性》所在位置》复制），最后没有“/”
-letsencrypt_path=/volume1/docker/certbot/letsencrypt
+#letsencrypt_path=/volume1/docker/certbot/letsencrypt
+current_path=$(cd "$(dirname $0)";pwd -P)
+cd $current_path
 
 #获取生成的证书的路径
-ca_domain=`ls -F ${letsencrypt_path}/live/ | grep /$ | head -n1`
+#ca_domain=`ls -F ${letsencrypt_path}/live/ | grep /$ | head -n1`
+ca_domain=`ls -F ../live/ | grep /$ | head -n1`
+echo $ca_domain
 if [ "$ca_domain"x != ""x ]; then
 	ca_domain=${ca_domain%/*}
-	ca_dir=$letsencrypt_path"/live/"$ca_domain
+	#ca_dir=$letsencrypt_path"/live/"$ca_domain
+	ca_dir="../live/"$ca_domain
 
 	if [ -f "${ca_dir}/cert.pem" ] && [ -f "${ca_dir}/chain.pem" ] && [ -f "${ca_dir}/fullchain.pem" ] && [ -f "${ca_dir}/privkey.pem" ]; then
 		echo "copy docker cert success(To /tmp/)"
