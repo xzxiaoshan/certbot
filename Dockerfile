@@ -26,8 +26,6 @@ RUN set -x \
   && echo 'Y' | /usr/local/bin/certbot-auto --install-only \
   && mkdir -p /etc/letsencrypt/renewal \
   && chmod +x /opt/shell/* \
-  && mkdir -p /etc/letsencrypt/synology \
-  && mv /opt/shell/syncSynologyCert.sh /etc/letsencrypt/synology/ \
   && sed -i 's/^\(ALY\|TXY\|HWY\|GODADDY\)/#&/' /opt/certbot-au/au.sh \
   && chmod +x /opt/certbot-au/au.sh \
   && sed -ri 's/.*pam_loginuid.so/#&/' /etc/pam.d/crond \
