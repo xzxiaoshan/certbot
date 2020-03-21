@@ -27,10 +27,13 @@ xzxiaoshan/xzxiaoshan-certbot:latest /bin/bash
 * 配置运行环境的过程中，如果你没有科学上网，那么可能会因为网络不好而出现错误（只要你再日志中搜索存在`timeout`就可以确定），然后你只需要重启容器即可，直到没有类似的网络问题错误。  
 * 日志在`certbot.log`文件中可能看到。  
 
-### 附：群晖证书自动同步脚本  
-1、脚本下载地址：https://raw.githubusercontent.com/xzxiaoshan/certbot/master/shell/syncSynologyCert.sh  
-2、脚本使用方法：修改脚本中第一个变量`letsencrypt_path`的路径值（脚本中有说明）  
-3、使用群晖的定时任务，每天执行一次该脚本即可。  
+### 附：群晖证书自动同步  
+群晖》控制面板》任务计划》新增自定义用户脚本》任务设置》脚本内容填写  
+```
+/volume1/docker/certbot/letsencrypt/synology/syncSynologyCert.sh
+```
+其中前面一段`/volume1/docker/certbot/letsencrypt`是你群晖配置容器时挂载的卷的目录的实际路径（右键文件夹属性查看）   
+脚本设置每天执行一次即可。  
 
 ---
 
