@@ -35,6 +35,12 @@ xzxiaoshan/xzxiaoshan-certbot:latest /bin/bash
 其中前面一段`/volume1/docker/certbot/letsencrypt`是你群晖配置容器时挂载的卷的目录的实际路径（右键文件夹属性查看）   
 脚本设置每天执行一次即可。  
 
+### 自动升级certbot
+官方命令certbot-auto每次执行将始终尝试从最新版本中获取自身的最新版本。
+如果希望将其锁定到特定版本并且不接收自动更新，只需在命令后加 --no-self-upgrade 即可。
+即：`certbot-auto renew --no-self-upgrade`
+对于本源码中，对应修改 `shell/renewCmd.sh` 脚本内容，添加 `--no-self-upgrade` 参数后自行构建镜像即可。
+
 ---
 
 感谢[certbot-au](https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au)代码的作者。  
